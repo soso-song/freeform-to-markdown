@@ -1,0 +1,29 @@
+{
+  "archive_schema": "1.0",
+  "board_title": "Synthetic 研究 Board",
+  "active_object_count": 6,
+  "tombstoned_object_count": 1,
+  "asset_reference_count": 2,
+  "required_directories": [
+    "Board",
+    "Scenes",
+    "Originals",
+    "Extracted",
+    "Manifest"
+  ],
+  "required_manifest_files": [
+    "archive.json",
+    "objects.jsonl",
+    "assets.jsonl",
+    "relations.jsonl",
+    "exceptions.jsonl",
+    "verification.json",
+    "SHA256SUMS"
+  ],
+  "allowed_dispositions": [
+    "filed",
+    "context-only",
+    "duplicate",
+    "unresolved"
+  ]
+}

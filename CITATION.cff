@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If this software supports your work, please cite it using this metadata."
+title: "freeform-to-markdown"
+abstract: "A privacy-first exporter for searchable, verifiable Apple Freeform archives."
+type: software
+authors:
+  - family-names: "Song"
+    given-names: "Soso"
+license: "Apache-2.0"
+repository-code: "https://github.com/soso-song/freeform-to-markdown"
+url: "https://github.com/soso-song/freeform-to-markdown"
+version: "0.1.0"
+date-released: "2026-08-12"
+keywords:
+  - "Apple Freeform"
+  - "Markdown"
+  - "digital archiving"
+  - "local-first"
+  - "OCR"

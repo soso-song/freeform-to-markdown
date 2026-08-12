@@ -1,0 +1,4 @@
+interface:
+  display_name: "Freeform to Markdown"
+  short_description: "Archive Freeform boards as searchable evidence"
+  default_prompt: "Use $freeform-to-markdown to archive this Freeform board into searchable files and verify every object."

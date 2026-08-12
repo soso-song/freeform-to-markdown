@@ -1,0 +1,90 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "freeform-to-markdown"
+version = "0.1.0"
+description = "Archive Apple Freeform boards as searchable Markdown, original assets, and verifiable manifests."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Soso Song" }]
+keywords = ["apple-freeform", "markdown", "ocr", "digital-archiving", "local-first"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Console",
+  "Intended Audience :: End Users/Desktop",
+  "License :: OSI Approved :: Apache Software License",
+  "Operating System :: MacOS",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Text Processing :: Markup :: Markdown",
+]
+dependencies = [
+  "pypdf>=5.0,<7",
+  "PyYAML>=6.0,<7",
+]
+
+[project.optional-dependencies]
+dev = [
+  "build>=1.2,<2",
+  "mypy>=1.15,<2",
+  "pip-audit>=2.7,<3",
+  "pytest>=9.0.3,<10",
+  "pytest-cov>=6,<7",
+  "ruff>=0.11,<1",
+  "types-PyYAML>=6.0,<7",
+]
+
+[project.scripts]
+freeform-to-markdown = "freeform_to_markdown.cli:main"
+ff2md = "freeform_to_markdown.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/soso-song/freeform-to-markdown"
+Repository = "https://github.com/soso-song/freeform-to-markdown"
+Issues = "https://github.com/soso-song/freeform-to-markdown/issues"
+Changelog = "https://github.com/soso-song/freeform-to-markdown/blob/main/CHANGELOG.md"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/freeform_to_markdown"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"skills/freeform-to-markdown" = "freeform_to_markdown/bundled_skill"
+
+[tool.hatch.build]
+include = [
+  "src/freeform_to_markdown/**/*.py",
+  "src/freeform_to_markdown/helpers/*.swift",
+  "skills/freeform-to-markdown/**",
+]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "RUF"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["freeform_to_markdown", "tests"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+files = ["src/freeform_to_markdown"]
+
+[tool.pytest.ini_options]
+addopts = "-ra --strict-markers --cov=freeform_to_markdown --cov-report=term-missing"
+testpaths = ["tests"]
+
+[tool.coverage.run]
+branch = true
+omit = ["src/freeform_to_markdown/__main__.py"]
+
+[tool.coverage.report]
+fail_under = 85
+show_missing = true
