@@ -1,1 +1,8 @@
 * @soso-song
+
+# Dependency-only changes are reviewed by the restricted Dependabot workflow.
+# The empty owners are intentional; all other paths still require @soso-song.
+/pyproject.toml
+/uv.lock
+/.github/dependabot.yml
+/.github/workflows/
