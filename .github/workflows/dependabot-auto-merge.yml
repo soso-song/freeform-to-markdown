@@ -36,13 +36,16 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_URL: ${{ github.event.pull_request.html_url }}
 
-      - name: Enable squash auto-merge after required checks pass
+      # A merge commit keeps the default-branch workflow run attributed to the
+      # repository maintainer. GitHub documents that a Dependabot-authored
+      # squash commit can leave CodeQL with a read-only token on the push run.
+      - name: Enable merge-commit auto-merge after required checks pass
         if: >-
           (steps.metadata.outputs.package-ecosystem == 'github-actions' ||
           steps.metadata.outputs.dependency-type == 'direct:development') &&
           (steps.metadata.outputs.update-type == 'version-update:semver-patch' ||
           steps.metadata.outputs.update-type == 'version-update:semver-minor')
-        run: gh pr merge --auto --squash "$PR_URL"
+        run: gh pr merge --auto --merge "$PR_URL"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_URL: ${{ github.event.pull_request.html_url }}
